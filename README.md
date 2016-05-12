@@ -8,7 +8,7 @@ On [Ubuntu](https://ubuntu.com), there are metapackages (basically pointers or u
 Well, I was [doing this manually](http://www.psychocats.net/ubuntucat/tag/pure-ubuntu/) for many years, and it honestly gets tiresome, so I figured I'd just script it to make it somewhat future-proof.
 
 ## How do I use the script?
-* Download the **purebuntu.py** file from this GitHub repository.
+* Download the [**purebuntu.py**](https://github.com/aysiu/purebuntu/blob/master/purebuntu.py) file from this GitHub repository.
 * Install the **apt-rdepends** package using the terminal command `sudo apt-get update && sudo apt-get install apt-rdepends`
 * Run the **pureubuntu.py** file using this syntax: `python ~/Downloads/purbuntu --remove kubuntu-desktop --keep ubuntu-desktop` but substitute in the metapackages you actually want to keep and remove.
 * Take the resulting output and copy and paste it into the terminal
