@@ -22,6 +22,13 @@ import os
 # To run bash commands from Python
 import subprocess
 
+# There's a bug, apparently, where apt-rdepends doesn't always go full recursive, so sometimes this will allow
+# some protected essential Linux items to be removed... even though, in theory, we're sudo apt-get install'ing back
+# everything anyway, it's probably best not to even try to remove this items in the first place, because it may break
+# the user's system.
+# Bug here: https://bugs.launchpad.net/ubuntu/+source/apt-rdepends/+bug/315567
+protected_items=['apt', 'adduser', 'e2fsprogs', 'libblkid1', 'libuuid1', 'util-linux', 'findutils', 'gzip', 'init', 'systemd-sysv', 'login', 'libaudit1', 'libpam0g', 'libpam-runtime', 'libpam-modules', 'mount', 'libmount1', 'libfdisk1']
+
 # Lines come back with a Recommends: or Depends: potentially at the beginning of the line and parentheses with some notes potentially at the end of the line
 def cleanline(dirtyline):
    if ":" in dirtyline:
@@ -54,7 +61,7 @@ def getdependencies(metapackage):
 def getitemstoremove(metapackagetoremove, metapackagetokeep):
    itemstoremove=[]
    for itemtoconsider in metapackagetoremove:
-      if itemtoconsider not in metapackagetokeep:
+      if itemtoconsider not in metapackagetokeep and itemtoconsider not in protected_items:
          itemstoremove.append(itemtoconsider)
    return itemstoremove
 
