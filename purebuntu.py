@@ -27,7 +27,7 @@ import subprocess
 # everything anyway, it's probably best not to even try to remove this items in the first place, because it may break
 # the user's system.
 # Bug here: https://bugs.launchpad.net/ubuntu/+source/apt-rdepends/+bug/315567
-protected_items=['apt', 'adduser', 'e2fsprogs', 'libblkid1', 'libuuid1', 'util-linux', 'findutils', 'gzip', 'init', 'systemd-sysv', 'login', 'libaudit1', 'libpam0g', 'libpam-runtime', 'libpam-modules', 'mount', 'libmount1', 'libfdisk1']
+protected_items=['apt', 'adduser', 'e2fsprogs', 'libblkid1', 'libuuid1', 'util-linux', 'findutils', 'gzip', 'init', 'systemd-sysv', 'login', 'libaudit1', 'libpam0g', 'libpam-runtime', 'libpam-modules', 'mount', 'libmount1', 'libfdisk1', 'libapt-pkg5.0', 'libc6', 'libgcc1', 'libstdc++6', 'init-system-helpers', 'gpgv', 'gnupg', 'gnupg2', 'base-files', 'base-passwd', 'libdebconfclient0', 'bash', 'dash', 'libtinfo5', 'debianutils', 'bsdutils', 'libsystemd0', 'coreutils', 'libacl1', 'libattr1', 'libselinux1', 'dpkg', 'diffutils', 'libbz2-1.0', 'liblzma5', 'zlib1g', 'tar', 'e2fslibs', 'libcomerr2', 'libss2', 'grep', 'libpcre3', 'install-info', 'hostname', 'lsb-base', 'systemd-sysv', 'libc-bin', 'libsmartcols1', 'libudev1', 'ncurses-bin', 'perl-base', 'sed', 'libncursesw5', 'sysvinit-utils']
 
 # Lines come back with a Recommends: or Depends: potentially at the beginning of the line and parentheses with some notes potentially at the end of the line
 def cleanline(dirtyline):
