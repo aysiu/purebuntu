@@ -47,7 +47,7 @@ def cleanline(dirtyline):
 
 # I've looked into using apt-cache depends NAMEOFMETAPACKAGE --recurse, but it brings back a whole mess of packages, and it just doesn't work for the logic we're using here, which is basically: list all the recursive dependencies of both metapackages, and then find the difference between the two.
 def getdependencies(metapackage):
-   cmd="apt-rdepends --follow=Recommends " + metapackage
+   cmd="apt-rdepends --follow=Depends " + metapackage
    dependencies=subprocess.check_output(cmd, shell=True)
    dependencylistdirty=dependencies.split("\n")
    dependencylist=[]
