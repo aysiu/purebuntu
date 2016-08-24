@@ -9,7 +9,7 @@ Well, I was [doing this manually](http://www.psychocats.net/ubuntucat/tag/pure-u
 
 ## How do I use the script?
 * Download the [**purebuntu.py**](https://github.com/aysiu/purebuntu/blob/master/purebuntu.py) file from this GitHub repository.
-* Install the **apt-rdepends** package using the terminal command `sudo apt-get update && sudo apt-get install apt-rdepends`
+* If you haven't updated your apt cache lately, make sure to run `sudo apt-get update`
 * Run the **pureubuntu.py** file using this syntax: `python ~/Downloads/purebuntu.py --remove kubuntu-desktop --keep ubuntu-desktop` but substitute in the metapackages you actually want to keep and remove.
 * Take the resulting output and copy and paste it into the terminal
 
