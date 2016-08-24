@@ -21,9 +21,6 @@ Well, I was [doing this manually](http://www.psychocats.net/ubuntucat/tag/pure-u
 
 There may be others, too.
 
-## Why not use apt-cache?
-I tried apt-cache, and it was a mess in terms of the output it returned. The only way I could get good, consistent, and easy-to-use results was to use apt-rdepends. Yes, it means you have to install an additional package to remove packages, but it's a singular (and tiny) package that has no dependencies itself, so you can just remove it again later if you want.
-
 ## Why not just run the command instead of generating output to copy and paste?
 The commands purebuntu generates involve removing a lot of packages. It's important the user actually consent to those packages being removed. If the list is generated, it gives the option for users to omit some of the packages and still get roughly the same effect as removing the entire set of dependencies from the metapackage (minus those one or two packages they want to keep).
 
