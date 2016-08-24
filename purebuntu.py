@@ -19,13 +19,14 @@
 from __future__ import print_function
 import argparse
 import os
+import re
 # To run bash commands from Python
 import subprocess
 
 def getdependencies(metapackage):
-   cmd="apt-cache showpkg " + metapackage + " | grep -A2 \"Dependencies\" | awk -F \" - \" '{print $2}' | awk -F \":i386\" '{print $1}'"
-   dependencies=subprocess.check_output(cmd, shell=True)
-   dependencylist=dependencies.split(" (0 (null)) ")
+   dependenciescheck=subprocess.check_output(['apt-cache', 'show', metapackage])
+   dependencies=re.search("Depends: (.*?)\n", dependenciescheck)
+   dependencylist=dependencies.group(1).split(", ")
    dependencylist.sort()
    return dependencylist
 
@@ -34,8 +35,7 @@ def getitemstoremove(metapackagetoremove, metapackagetokeep):
    itemstoremove=[]
    for itemtoconsider in metapackagetoremove:
       if itemtoconsider not in metapackagetokeep:
-         # For some reason, a couple of items have one or two instances of a preceding carriage return, so let's get rid of that
-         itemstoremove.append(itemtoconsider.replace("\n",""))
+         itemstoremove.append(itemtoconsider)
    return itemstoremove
 
 def main():
